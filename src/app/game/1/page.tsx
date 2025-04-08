@@ -33,6 +33,24 @@ export default function Game1() {
             </span>
           </div>
         </div>
+        <div className="w-full overflow-hidden rounded-lg shadow-lg border border-gray-700">
+          <iframe 
+            src="https://tracert.alipay.com/cross.html" 
+            className="w-full h-[600px]" 
+            frameBorder="0" 
+            allowFullScreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          />
+        </div>
+        <div className="bg-gray-800 p-6 rounded-lg text-left">
+          <h2 className="text-xl font-semibold mb-4">{locale === 'zh' ? '游戏控制与提示' : 'Game Controls & Tips'}</h2>
+          <ul className="space-y-2 list-disc list-inside">
+            <li>{locale === 'zh' ? '使用鼠标点击控制游戏' : 'Use mouse clicks to control the game'}</li>
+            <li>{locale === 'zh' ? '完成每一关的挑战来解锁下一关' : 'Complete each level challenge to unlock the next one'}</li>
+            <li>{locale === 'zh' ? '注意时间限制和游戏规则' : 'Pay attention to time limits and game rules'}</li>
+            <li>{locale === 'zh' ? '尝试获得最高分数' : 'Try to achieve the highest score possible'}</li>
+          </ul>
+        </div>
         <Button 
           onClick={() => router.push("/")}
           className="mx-auto"
