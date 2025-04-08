@@ -1,17 +1,16 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useI18n } from "@/app/i18n/context";
-import { locales } from "@/app/i18n/settings";
+import { locales, Locale } from "@/app/i18n/settings";
 
 const LanguageSwitcher = () => {
   const router = useRouter();
-  const pathname = usePathname();
   const { locale, setLocale } = useI18n();
 
   const handleLanguageChange = (newLocale: string) => {
     // 简单实现：刷新当前页面到根路径
-    setLocale(newLocale as any);
+    setLocale(newLocale as Locale);
     router.push(`/${newLocale === 'en' ? '' : newLocale}`);
   };
 
