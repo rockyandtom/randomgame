@@ -10,10 +10,6 @@ export default function Game1() {
   const router = useRouter();
   const { messages, locale } = useI18n();
   const game = games.find(g => g.id === 'game1');
-  
-  const refreshData = () => {
-    router.refresh();
-  }
 
   return (
     <>
@@ -23,13 +19,11 @@ export default function Game1() {
       <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4">
         <div className="w-full max-w-[360px] sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1200px] text-center space-y-8">
           <h1 className="text-2xl md:text-3xl font-bold tracking-wide">
-            Celeste - GameHub Platform
+            {locale === 'zh' ? game?.name.zh : game?.name.en} - GameHub Platform
           </h1>
           <div className="py-4">
             <p className="text-lg mb-4">
-              {locale === 'zh' ? 
-                "帮助 Madeline 在这个具有挑战性的平台游戏中完成她到达 Celeste 山顶的旅程。" : 
-                "Help Madeline survive her journey to the top of Celeste Mountain in this challenging platformer."}
+              {locale === 'zh' ? game?.description?.zh : game?.description?.en}
             </p>
             <div className="flex flex-wrap justify-center gap-2 my-4">
               {game?.tags?.map(tag => (
@@ -46,7 +40,7 @@ export default function Game1() {
           </div>
           <div className="w-full overflow-hidden rounded-lg shadow-lg border border-gray-700">
             <iframe 
-              src="https://definitelynotblocked.vercel.app/games/celeste/index.html" 
+              src={game?.iframeUrl || "https://definitelynotblocked.vercel.app/games/celeste/index.html"} 
               className="w-full h-[600px]" 
               frameBorder="0" 
               allowFullScreen
